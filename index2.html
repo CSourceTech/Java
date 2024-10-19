@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar with Toggle</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" data-aos="fade-down" style="display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; padding: 10px 20px; position: relative; z-index: 10; width: 100%;">
+        <div class="logo">
+            <img src="./images/WhatsApp_Image_2024-09-24_at_16.58.07-removebg-preview.png" style="width: 150px; height: 50px; padding: 0px;">
+        </div>
+
+        <ul class="nav-links" style="list-style: none; display: flex; flex-direction: row; justify-content: space-around; align-items: center; margin: 0; padding: 0;">
+            <li style="margin: 0 10px;"><a href="#home" class="active" style="color: black; text-decoration: none; padding: 8px 12px; background-color: #95f77c; border-radius: 5px;">Home</a></li>
+            <li style="margin: 0 10px;"><a href="#about-us" style="color: black; text-decoration: none; padding: 8px 12px;">About us</a></li>
+            <li style="margin: 0 10px;"><a href="#program" style="color: black; text-decoration: none; padding: 8px 12px;">Programs</a></li>
+            <li style="margin: 0 10px;"><a href="#faq" style="color: black; text-decoration: none; padding: 8px 12px;">FAQ's</a></li>
+            <li style="margin: 0 10px;"><a href="./enquiry.html" style="color: black; text-decoration: none; padding: 8px 12px;">Contact Us</a></li>
+        </ul>
+
+        <div class="burger" onclick="toggleMenu()" style="display: none; flex-direction: column; justify-content: space-between; height: 24px; cursor: pointer;">
+            <div class="line1" style="width: 30px; height: 3px; background-color: black; margin: 3px; transition: all 0.3s ease;"></div>
+            <div class="line2" style="width: 30px; height: 3px; background-color: black; margin: 3px; transition: all 0.3s ease;"></div>
+            <div class="line3" style="width: 30px; height: 3px; background-color: black; margin: 3px; transition: all 0.3s ease;"></div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const burger = document.querySelector('.burger');
+
+            // Toggle between displaying or hiding the nav links
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '60px';  // Position the menu below the navbar
+                navLinks.style.backgroundColor = 'white';  // Match navbar color
+                navLinks.style.width = '100%';  // Make it span full width
+                navLinks.style.height = '100vh';  // Full height for vertical menu
+                navLinks.style.justifyContent = 'center';  // Center items vertically
+                navLinks.style.alignItems = 'center';  // Center items horizontally
+            }
+        }
+
+        function redirectToLogin() {
+            window.location.href = './login.html';
+        }
+
+        // Media query for mobile view
+        if (window.innerWidth <= 768) {
+            document.querySelector('.burger').style.display = 'flex';  // Show burger menu in mobile view
+            document.querySelector('.nav-links').style.display = 'none';  // Hide nav links by default in mobile view
+        }
+        // Adjust visibility when window is resized
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.querySelector('.nav-links').style.display = 'flex';  // Show nav links for larger screens
+            } else {
+                document.querySelector('.nav-links').style.display = 'none';  // Hide nav links for small screens
+            }
+        });
+    </script>
+</body>
+</html>
